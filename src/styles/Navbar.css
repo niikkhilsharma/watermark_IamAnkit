@@ -1,0 +1,33 @@
+/* Styling for the toggle input container */
+.toggle-container {
+	position: relative;
+	display: inline-block;
+	width: 60px; /* Adjust this to change the width of the toggle */
+	height: 30px; /* Adjust this to change the height of the toggle */
+}
+
+/* Styling for the slider (the visible part of the toggle) */
+.toggle-slider {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 15px; /* Adjust this to change the roundness of the toggle */
+	background-color: #c4c6d7; /* Set your desired background color here */
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+/* Styling for the slider when the toggle is OFF (inactive) */
+.toggle-slider::before {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 24px; /* Adjust this to change the size of the circle inside the toggle */
+	height: 24px; /* Adjust this to change the size of the circle inside the toggle */
+	border-radius: 50%; /* Make the circle shape */
+	background-color: #fff; /* Set your desired background color for the circle inside the toggle */
+	transition: transform 0.1s ease;
+}
