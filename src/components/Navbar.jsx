@@ -12,21 +12,44 @@ const Navbar = () => {
 					</label>
 					<ul tabIndex={0} className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'>
 						<li>
-							<a>Item 1</a>
+							<a>Home</a>
 						</li>
 						<li>
-							<a>Parent</a>
+							<a>About</a>
+						</li>
+						<li>
+							<a>PDF</a>
 							<ul className='p-2'>
 								<li>
-									<a>Submenu 1</a>
+									<a>Watermark PDF</a>
 								</li>
 								<li>
-									<a>Submenu 2</a>
+									<a>Compress PDF</a>
+								</li>
+								<li>
+									<a>Set PDF Metadata</a>
+								</li>
+								<li>
+									<a>Embed PNG and JPEG Images</a>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<a>Item 3</a>
+							<a>Images</a>
+							<ul className='p-2'>
+								<li>
+									<a>Watermark PDF</a>
+								</li>
+								<li>
+									<a>Compress PDF</a>
+								</li>
+								<li>
+									<a>Set PDF Metadata</a>
+								</li>
+								<li>
+									<a>Embed PNG and JPEG Images</a>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</div>
@@ -34,15 +57,62 @@ const Navbar = () => {
 			</div>
 			<div className='navbar-center hidden lg:flex'>
 				<ul className='menu menu-horizontal px-1'>
-					<li>
+					<li className='mx-1'>
 						<a>Home</a>
 					</li>
-					<li>
+					<li className='mx-1'>
 						<a>About</a>
 					</li>
-					<li>
-						<a>Log In</a>
-					</li>
+					<div className='dropdown'>
+						<li tabIndex={0} className='mx-1'>
+							<a>PDF</a>
+						</li>
+						<div
+							tabIndex={0}
+							className='dropdown-content z-[1] card card-compact w-96 p-2 shadow bg-primary text-primary-content grid grid-cols-2'>
+							<div className='card-body'>
+								<h3 className='card-title'>Watermark PDF</h3>
+								<p>you can use any element as a dropdown.</p>
+							</div>
+							<div className='card-body'>
+								<h3 className='card-title'>Compress PDF</h3>
+								<p>you can use any element as a dropdown.</p>
+							</div>
+							<div className='card-body'>
+								<h3 className='card-title'>Set PDF Metadata</h3>
+								<p>you can use any element as a dropdown.</p>
+							</div>
+							<div className='card-body'>
+								<h3 className='card-title'>Embed PNG and JPEG Images</h3>
+								<p>you can use any element as a dropdown.</p>
+							</div>
+						</div>
+					</div>
+					<div className='dropdown'>
+						<li tabIndex={0} className='mx-1'>
+							<a>Images</a>
+						</li>
+						<div
+							tabIndex={0}
+							className='dropdown-content z-[1] card card-compact w-96 p-2 shadow bg-primary text-primary-content grid grid-cols-2'>
+							<div className='card-body'>
+								<h3 className='card-title'>Watermark Images</h3>
+								<p>you can use any element as a dropdown.</p>
+							</div>
+							<div className='card-body'>
+								<h3 className='card-title'>Compress PDF</h3>
+								<p>you can use any element as a dropdown.</p>
+							</div>
+							<div className='card-body'>
+								<h3 className='card-title'>Set PDF Metadata</h3>
+								<p>you can use any element as a dropdown.</p>
+							</div>
+							<div className='card-body'>
+								<h3 className='card-title'>Embed PNG and JPEG Images</h3>
+								<p>you can use any element as a dropdown.</p>
+							</div>
+						</div>
+					</div>
 				</ul>
 			</div>
 			<div className='navbar-end'>
