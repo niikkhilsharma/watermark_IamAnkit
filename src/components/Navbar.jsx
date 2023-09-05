@@ -1,144 +1,167 @@
-import React from 'react';
+import Image from 'next/image';
+import { React, useState } from 'react';
+import { IoMdArrowDropdown } from 'react-icons/io';
+import { IconContext } from 'react-icons';
 
-const Navbar = () => {
+const Navbar = ({ toggleTools, setToggleTools }) => {
+	console.log(toggleTools);
 	return (
-		<div className='navbar bg-base-100'>
-			<div className='navbar-start'>
-				<div className='dropdown'>
-					<label tabIndex={0} className='btn btn-ghost lg:hidden'>
-						<svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-							<path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M4 6h16M4 12h8m-8 6h16' />
+		<>
+			<header className='py-2 dark:bg-gray-800 dark:text-gray-100 w-full flex justify-center items-center'>
+				<div className='w-full flex justify-between h-16 mx-auto border-gray-800 dark:border-gray-100 border-b-2'>
+					<div className='flex'>
+						<a rel='noopener noreferrer' href='#' aria-label='Back to homepage' className='flex items-center p-2'>
+							<Image src={'/icons/logo2.png'} width={100} height={100} alt='logo' />
+						</a>
+						<div className='my-auto'>
+							<ul className='items-stretch hidden space-x-3 lg:flex'>
+								<li className={`flex ${toggleTools && 'text-blue-600'}`} onClick={e => setToggleTools(!toggleTools)}>
+									<a rel='noopener noreferrer' href='#' className='flex items-center px-4 -mb-1 dark:border-transparent'>
+										<Image src={'/icons/dot.svg'} width={100} height={100} alt='dot' className='w-7 h-7 mr-2' />
+										Tools
+										<IoMdArrowDropdown className={`ml-2 ${toggleTools && 'rotate-180 text-blue-600'}`} />
+									</a>
+								</li>
+								<li className='flex'>
+									<a
+										rel='noopener noreferrer'
+										href='#'
+										className='flex items-center px-4 -mb-1 dark:border-transparent dark:text-violet-400 dark:border-violet-400'>
+										Watermark
+									</a>
+								</li>
+								<li className='flex'>
+									<a rel='noopener noreferrer' href='#' className='flex items-center px-4 -mb-1 dark:border-transparent'>
+										Compress
+									</a>
+								</li>
+								<li className='flex'>
+									<a rel='noopener noreferrer' href='#' className='flex items-center px-4 -mb-1 dark:border-transparent'>
+										Convert
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div className='flex items-center md:space-x-4'>
+						<div>
+							<ul className='items-stretch hidden space-x-3 lg:flex'>
+								<li className='flex'>
+									<a
+										rel='noopener noreferrer'
+										href='#'
+										className='flex items-center px-4 -mb-1 dark:border-transparent dark:text-violet-400 dark:border-violet-400'>
+										How-tos
+									</a>
+								</li>
+								<li className='flex'>
+									<a rel='noopener noreferrer' href='#' className='flex items-center px-4 -mb-1 dark:border-transparent'>
+										Pricing
+									</a>
+								</li>
+								<li className='flex'>
+									<a rel='noopener noreferrer' href='#' className='flex items-center px-4 -mb-1 dark:border-transparent'>
+										Support
+									</a>
+								</li>
+							</ul>
+						</div>
+						<button
+							type='button'
+							className='hidden px-6 py-2 font-semibold rounded lg:block dark:bg-violet-400 dark:text-gray-900'>
+							Log in
+						</button>
+					</div>
+					<button title='Open menu' type='button' className='p-4 lg:hidden'>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							fill='none'
+							viewBox='0 0 24 24'
+							stroke='currentColor'
+							className='w-6 h-6 dark:text-gray-100'>
+							<path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M4 6h16M4 12h16M4 18h16'></path>
 						</svg>
-					</label>
-					<ul tabIndex={0} className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'>
-						<li>
-							<a>Home</a>
-						</li>
-						<li>
-							<a>About</a>
-						</li>
-						<li>
-							<a>PDF</a>
-							<ul className='p-2'>
-								<li>
-									<a>Watermark PDF</a>
-								</li>
-								<li>
-									<a>Compress PDF</a>
-								</li>
-								<li>
-									<a>Set PDF Metadata</a>
-								</li>
-								<li>
-									<a>Embed PNG and JPEG Images</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a>Images</a>
-							<ul className='p-2'>
-								<li>
-									<a>Watermark PDF</a>
-								</li>
-								<li>
-									<a>Compress PDF</a>
-								</li>
-								<li>
-									<a>Set PDF Metadata</a>
-								</li>
-								<li>
-									<a>Embed PNG and JPEG Images</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
+					</button>
 				</div>
-				<a className='btn btn-ghost normal-case text-xl'>Watermarkly</a>
-			</div>
-			<div className='navbar-center hidden lg:flex'>
-				<ul className='menu menu-horizontal px-1'>
-					<li className='mx-1'>
-						<a>Home</a>
-					</li>
-					<li className='mx-1'>
-						<a>About</a>
-					</li>
-					<div className='dropdown'>
-						<li tabIndex={0} className='mx-1'>
-							<a>PDF</a>
-						</li>
-						<div
-							tabIndex={0}
-							className='dropdown-content z-[1] card card-compact w-96 p-2 shadow bg-primary text-primary-content grid grid-cols-2'>
-							<div className='card-body'>
-								<h3 className='card-title'>Watermark PDF</h3>
-								<p>you can use any element as a dropdown.</p>
+				{toggleTools && (
+					<aside className='absolute z-10 top-20 p-6 w-60 dark:bg-gray-900 dark:text-gray-100 bg-white sm:w-full m-auto container'>
+						<nav className='space-y-8 sm:space-y-0 text-sm w-full grid grid-cols-4'>
+							<div className='space-y-2'>
+								<h2 className='text-sm font-semibold tracki uppercase dark:text-gray-400'>Getting Started</h2>
+								<div className='flex flex-col space-y-1'>
+									<a rel='noopener noreferrer' href='#'>
+										Installation
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Plugins
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Migrations
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Appearance
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Mamba UI
+									</a>
+								</div>
 							</div>
-							<div className='card-body'>
-								<h3 className='card-title'>Compress PDF</h3>
-								<p>you can use any element as a dropdown.</p>
+							<div className='space-y-2'>
+								<h2 className='text-sm font-semibold tracki uppercase dark:text-gray-400'>Dashboard</h2>
+								<div className='flex flex-col space-y-1'>
+									<a rel='noopener noreferrer' href='#'>
+										Header
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Drawer
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Page Title
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Menus
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Sidebar
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Footer
+									</a>
+								</div>
 							</div>
-							<div className='card-body'>
-								<h3 className='card-title'>Set PDF Metadata</h3>
-								<p>you can use any element as a dropdown.</p>
+							<div className='space-y-2'>
+								<h2 className='text-sm font-semibold tracki uppercase dark:text-gray-400'>Pages</h2>
+								<div className='flex flex-col space-y-1'>
+									<a rel='noopener noreferrer' href='#'>
+										Homepage
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Users
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Tools
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Settings
+									</a>
+								</div>
 							</div>
-							<div className='card-body'>
-								<h3 className='card-title'>Embed PNG and JPEG Images</h3>
-								<p>you can use any element as a dropdown.</p>
+							<div className='space-y-2'>
+								<h2 className='text-sm font-semibold tracki uppercase dark:text-gray-400'>Misc</h2>
+								<div className='flex flex-col space-y-1'>
+									<a rel='noopener noreferrer' href='#'>
+										Tutorials
+									</a>
+									<a rel='noopener noreferrer' href='#'>
+										Changelog
+									</a>
+								</div>
 							</div>
-						</div>
-					</div>
-					<div className='dropdown'>
-						<li tabIndex={0} className='mx-1'>
-							<a>Images</a>
-						</li>
-						<div
-							tabIndex={0}
-							className='dropdown-content z-[1] card card-compact w-96 p-2 shadow bg-primary text-primary-content grid grid-cols-2'>
-							<div className='card-body'>
-								<h3 className='card-title'>Watermark Images</h3>
-								<p>you can use any element as a dropdown.</p>
-							</div>
-							<div className='card-body'>
-								<h3 className='card-title'>Compress PDF</h3>
-								<p>you can use any element as a dropdown.</p>
-							</div>
-							<div className='card-body'>
-								<h3 className='card-title'>Set PDF Metadata</h3>
-								<p>you can use any element as a dropdown.</p>
-							</div>
-							<div className='card-body'>
-								<h3 className='card-title'>Embed PNG and JPEG Images</h3>
-								<p>you can use any element as a dropdown.</p>
-							</div>
-						</div>
-					</div>
-				</ul>
-			</div>
-			<div className='navbar-end'>
-				<div className='dropdown dropdown-end'>
-					<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
-						<div className='w-10 rounded-full'>
-							<img src='/images/stock/photo-1534528741775-53994a69daeb.jpg' />
-						</div>
-					</label>
-					<ul tabIndex={0} className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'>
-						<li>
-							<a className='justify-between'>
-								Profile
-								<span className='badge'>New</span>
-							</a>
-						</li>
-						<li>
-							<a>Settings</a>
-						</li>
-						<li>
-							<a>Logout</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+						</nav>
+					</aside>
+				)}
+			</header>
+		</>
 	);
 };
 

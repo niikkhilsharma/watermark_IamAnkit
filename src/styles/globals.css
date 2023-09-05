@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tools-card {
+	display: flex;
+	border: 1px solid rgb(232, 232, 232);
+	border-radius: 4px;
+	cursor: pointer;
+	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 24px;
+	color: rgb(26, 26, 26);
+	outline: none;
+	height: 120px;
+	margin: auto;
+	width: 100%;
+	background: rgb(250, 250, 250);
+}
+.tools-card:hover {
+	background: rgb(319 236 242);
+}
