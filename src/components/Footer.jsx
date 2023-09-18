@@ -1,9 +1,11 @@
-import React from 'react';
+import { React, useContext } from 'react';
+import { toggleToolsContext } from '@/pages/_app';
 
-const Footer = ({ toggleTools }) => {
+const Footer = () => {
+	const { toggleTools, setToggleTools } = useContext(toggleToolsContext);
 	return (
-		<footer className={`px-4 divide-y ${toggleTools ? 'opacity-40' : 'opacity-100'} w-full`}>
-			<div className='flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0'>
+		<footer className={`divide-y ${toggleTools ? 'opacity-40' : 'opacity-100'} w-full border-t-2 mt-10`}>
+			<div className='flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0 pl-4'>
 				<div className='lg:w-1/3'>
 					<a rel='noopener noreferrer' href='#' className='flex justify-center space-x-3 lg:justify-start'>
 						<div className='flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-400'>

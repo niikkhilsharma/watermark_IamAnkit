@@ -1,15 +1,18 @@
-import React from 'react';
+import { React, useContext } from 'react';
+import { toggleToolsContext } from '@/pages/_app';
 
-const price = () => {
+const Price = () => {
+	const { toggleTools, setToggleTools } = useContext(toggleToolsContext);
+
 	return (
-		<section className='py-20 dark:bg-gray-800 dark:text-gray-100'>
+		<section className={`my-20 dark:bg-gray-800 dark:text-gray-100 ${toggleTools && 'opacity-40'}`}>
 			<div className='container px-4 mx-auto'>
 				<div className='max-w-2xl mx-auto mb-16 text-center'>
 					<span className='font-bold tracki uppercase dark:text-violet-400'>Pricing</span>
 					<h2 className='text-4xl font-bold lg:text-5xl'>Choose your best plan</h2>
 				</div>
 				<div className='flex flex-wrap items-stretch -mx-4'>
-					<div className='flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0'>
+					<div className='flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 justify-center'>
 						<div className='flex flex-col p-6 space-y-6 rounded shadow sm:p-8 dark:bg-gray-900'>
 							<div className='space-y-2'>
 								<h4 className='text-2xl font-bold'>Beginner</h4>
@@ -64,7 +67,7 @@ const price = () => {
 							</button>
 						</div>
 					</div>
-					<div className='flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0'>
+					<div className='flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 justify-center'>
 						<div className='flex flex-col p-6 space-y-6 rounded shadow sm:p-8 dark:bg-violet-400 dark:text-gray-900'>
 							<div className='space-y-2'>
 								<h4 className='text-2xl font-bold'>Pro</h4>
@@ -136,7 +139,7 @@ const price = () => {
 							</a>
 						</div>
 					</div>
-					<div className='w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0'>
+					<div className='flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 justify-center'>
 						<div className='p-6 space-y-6 rounded shadow sm:p-8 dark:bg-gray-900'>
 							<div className='space-y-2'>
 								<h4 className='text-2xl font-bold'>Team</h4>
@@ -227,4 +230,4 @@ const price = () => {
 	);
 };
 
-export default price;
+export default Price;

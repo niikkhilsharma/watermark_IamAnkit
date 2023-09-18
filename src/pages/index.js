@@ -5,6 +5,8 @@ import Heropage2 from '@/components/Heropage2';
 import Features from '@/components/Features';
 import Reviews from '@/components/Reviews';
 import Premium from '@/components/Premium';
+import FAQ from '@/components/FAQ';
+import Price from '@/components/Price';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,7 +17,9 @@ export default function Home({ toggleTools }) {
 			<Heropage2 />
 			<Features />
 			<Reviews />
-			<Premium />
+			{/* <Premium /> */}
+			<Price />
+			<FAQ />
 		</div>
 	);
 }

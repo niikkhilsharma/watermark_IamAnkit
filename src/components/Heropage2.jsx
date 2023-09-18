@@ -4,13 +4,13 @@ import { GoChevronRight } from 'react-icons/go';
 
 const Heropage2 = () => {
 	return (
-		<div className='p-4 dark:bg-gray-800 dark:text-gray-100 w-full'>
+		<div className='p-4 dark:bg-gray-800 dark:text-gray-100 w-full min-h-[37rem]'>
 			<div className='container'>
 				<h1 className='text-4xl font-bold text-center'>Most Popular Tools</h1>
-				<p className='text-center my-5 m-auto'>
+				<p className='text-center my-10 m-auto'>
 					Protect Your Digital Assets with Precision: PDF and Image Watermarking Made Effortless!
 				</p>
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-10 max-w-5xl m-auto'>
+				<div className='grid grid-cols-1 mt-20 md:grid-cols-2 lg:grid-cols-3 gap-8 my-10 max-w-5xl m-auto'>
 					<div className='bg-gray-100 min-w-[20rem] h-32 flex items-start p-2 py-3 gap-1 tools-card'>
 						<div className='mr-3'>
 							<Image src={'/icons/word.svg'} width={60} height={60} alt='word' />

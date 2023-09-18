@@ -1,21 +1,33 @@
 import React, { useState, useEffect } from 'react'; // Combine the imports
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import axios from 'axios';
 
 const watermark = () => {
 	const router = useRouter();
 
 	async function handleChange(e) {
-		const pdfBlob = new Blob([e.target.files[0]], { type: 'application/pdf' });
-		const pdfUrl = URL.createObjectURL(pdfBlob);
-		console.log('pdfUrl', pdfUrl);
+		const images = Array.from(e.target.files);
+		// console.log(images);
 
-		router.push(`/pdf/watermark-edit?pdfUrl=${pdfUrl}`);
-		// document.querySelector('embed').src = pdfUrl;
+		const imagesUrl = {};
+
+		images.forEach(img => {
+			const imgBlob = new Blob([img], { type: `${img.type}` });
+			const imgUrl = URL.createObjectURL(imgBlob);
+			// console.log('imgUrl', imgUrl);
+			// imagesUrl.push(imgUrl);
+			imagesUrl[img.name] = imgUrl;
+		});
+		// console.log(imagesUrl);
+
+		const imagesUrlString = JSON.stringify(imagesUrl);
+		// console.log(imagesUrlString);
+
+		router.push(`/images/watermark-edit?imgUrl=${imagesUrlString}`);
 	}
+
 	useEffect(() => {
-		localStorage.setItem('reload', 'nikhil');
+		// localStorage.setItem('reload', 'nikhil');
 	}, []);
 
 	return (
@@ -28,16 +40,17 @@ const watermark = () => {
 								<label htmlFor='file-upload' className='file-label'>
 									<div className='w-[37vh] h-[37vh] flex justify-center items-center rounded-full p-2 relative z-10 overflow-visible bg-white flex-col px-8 cursor-pointer'>
 										<Image src={'/icons/folder.svg'} width={100} height={100} alt='img' />
-										<h2 className='text-xl text-center my-4 font-bold text-black'>Click here to upload your PDf</h2>
+										<h2 className='text-xl text-center my-4 font-bold text-black'>Click here to upload your Photo</h2>
 										<div className='text-black inline z-10'>
 											<form action='#'>
 												Or, <span className='underline'>browse to upload</span>
 												<input
 													type='file'
-													accept='.pdf'
+													accept='.png, .jpg, .jpeg'
 													id='file-upload'
-													name='pdf'
+													name='image'
 													className='hidden'
+													multiple={true}
 													onChange={e => handleChange(e)}
 												/>
 											</form>
@@ -52,11 +65,10 @@ const watermark = () => {
 				<div className='absolute bottom-10 sm:bottom-16 md:bottom-10 lg:bottom-12 w-full text-white px-2'>
 					<h1 className='text-4xl sm:text-6xl md:text-7xl text-center font-bold'>Click Me. It’s online.</h1>
 					<p className='text-center sm:text-2xl md:text-4xl px-8 sm:p-0 text-xl mt-4'>
-						Upload your pdf here and let us do the Magic.
+						Upload your Image here and let us do the Magic.
 					</p>
 				</div>
 			</div>
-			{/* <embed src='' type='application/pdf' width={'100%'} height={'600px'} /> */}
 		</>
 	);
 };

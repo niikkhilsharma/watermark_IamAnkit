@@ -26,7 +26,7 @@ const Heropage = () => {
 							rel='noopener noreferrer'
 							href='#'
 							className='px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100'>
-							Explore All PDF Tools
+							Explore All Tools
 						</a>
 					</div>
 				</div>
